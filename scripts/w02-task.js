@@ -5,30 +5,43 @@
 /* Step 2 - Variables */
 const fullName = 'Jéssica Seniw';
 const currentYear = new Date().getFullYear();
-const profilePicture = 'images/me.png';
+const profilePicture = 'images/me.jpg';
 
 /* Step 3 - Element Variables */
-const nameElement = document.getElementById('name');
-const foodElement = document.getElementById('food');
+const nameElement = document.querySelector('#name');
+const foodElement = document.querySelector('#food');
 const yearElement = document.querySelector('#year');
-const imageElement = document.querySelector('Placeholder Image');
+const imageElement = document.querySelector('img');
 
 /* Step 4 - Adding Content */
-nameElement.innerHTML = `<strong>${fullName}</strong>`;
+nameElement.textContent = fullName;
 yearElement.textContent = currentYear;
 imageElement.setAttribute('src', profilePicture);
-imageElement.setAttribute('alt', `Profile image of ${fullName}`);
+imageElement.setAttribute('alt', `This is ${fullName}. She is a student at BYU-Idaho.`);
 
 /* Step 5 - Array */
-const favFoods = ['Cuscuz', 'Strogonoff', 'Sushi'];
-foodElement.innerHTML = favFoods.map(food => `<div>${food}</div>`).join('');
+let favfoods = ["Cuscuz", "Pizza", "Hamburguer", "Strogonoff"];
 
-const newFavoriteFood = 'NewFood';
-favFoods.push(newFavoriteFood);
-foodElement.innerHTML += `<div>${newFavoriteFood}</div>`;
+// Render the initial array
+foodElement.innerHTML = favfoods.join(', ');
 
-favFoods.shift();
-foodElement.innerHTML += favFoods.map(food => `<div>${food}</div>`).join('');
+// Declare and instantiate a new favorite food
+let newFood = 'Ice Cream';
 
-favFoods.pop();
-foodElement.innerHTML += favFoods.map(food => `<div>${food}</div>`).join('');
+// Add the new favorite food to the array
+favfoods.push(newFood);
+
+// Render the new array
+foodElement.innerHTML += `<br>${favfoods.join(', ')}`;
+
+// Remove the first element from the array
+favfoods.shift();
+
+// Render the updated array after removing the first element
+foodElement.innerHTML += `<br>${favfoods.join(', ')}`;
+
+// Remove the last element from the array
+favfoods.pop();
+
+// Render the updated array after removing the last element
+foodElement.innerHTML += `<br>${favfoods.join(', ')}`;
