@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('DOMContentLoaded event fired.'); // Verifica se o evento DOMContentLoaded está sendo disparado corretamente
     const form = document.getElementById('novaTarefaForm');
     const listaTarefas = document.getElementById('listaTarefas');
 
@@ -39,28 +38,19 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Temperatura obtida:', temperature);
 
         // Criar um novo elemento li para a tarefa
-        const novaTarefa = criarNovaTarefaElemento(titulo, descricao, data, localizacao, temperature);
-
-        console.log('Nova Tarefa Elemento:', novaTarefa); // Verifica se o elemento de tarefa foi criado corretamente
+        const novaTarefa = document.createElement('li');
+        novaTarefa.innerHTML = `
+            <strong>${titulo}</strong>
+            <p>${descricao}</p>
+            <p>Data: ${data}</p>
+            <p>Localização: ${localizacao}</p>
+            <p>Temperatura: ${temperature}°C</p>
+        `;
 
         // Adicionar a nova tarefa à lista de tarefas do lado direito
         listaTarefas.appendChild(novaTarefa);
-        console.log('Tarefa adicionada à lista.'); // Verifica se a tarefa está sendo adicionada à lista corretamente
 
         // Limpar os campos do formulário
         form.reset();
     });
 });
-
-// Função para criar um novo elemento li para a tarefa
-function criarNovaTarefaElemento(titulo, descricao, data, localizacao, temperature) {
-    const novaTarefa = document.createElement('li');
-    novaTarefa.innerHTML = `
-        <strong>${titulo}</strong>
-        <p>${descricao}</p>
-        <p>Data: ${data}</p>
-        <p>Localização: ${localizacao}</p>
-        <p>Temperatura: ${temperature}°C</p>
-    `;
-    return novaTarefa;
-}
