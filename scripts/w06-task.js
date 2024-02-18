@@ -1,48 +1,47 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('novaTarefaForm');
-    const listaTarefas = document.getElementById('listaTarefas');
+    const form = document.getElementById('newTaskForm');
+    const taskList = document.getElementById('taskList');
 
-    form.addEventListener('submit', async function (event) {
+    form.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        const titulo = document.getElementById('titulo').value;
-        const descricao = document.getElementById('descricao').value;
-        const data = document.getElementById('data').value;
-        const localizacao = document.getElementById('localizacao').value;
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const date = document.getElementById('date').value;
 
-        // Function to fetch weather forecast
-        async function fetchWeather(location) {
-            const apiKey = '5d7a574be290b819810371ce389ec5b7'; // Replace with your API key
-            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
-
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
+        // Substitua 'WEATHER_API_URL' pelo URL da API de previsão do tempo
+        fetch('Whttps://openweathermap.org/api')
+            .then(response => response.json())
+            .then(data => {
                 const temperature = data.main.temp;
-                return temperature; // Returns temperature in Celsius
-            } catch (error) {
-                console.error('Error fetching weather forecast:', error);
-                return 'N/A'; // Returns N/A if there's an error
-            }
-        }
 
-        // Get temperature for task location
-        const temperature = await fetchWeather(localizacao);
+                // Create a new li element for the task with temperature
+                const newTask = document.createElement('li');
+                newTask.innerHTML = `
+                    <strong>${title}</strong>
+                    <p>${description}</p>
+                    <p>Date: ${date}</p>
+                    <p>Current Temperature: ${temperature}°C</p>
+                `;
 
-        // Create a new li element for the task
-        const novaTarefa = document.createElement('li');
-        novaTarefa.innerHTML = `
-            <strong>${titulo}</strong>
-            <p>${descricao}</p>
-            <p>Date: ${data}</p>
-            <p>Location: ${localizacao}</p>
-            <p>Temperature: ${temperature}°C</p>
-        `;
+                // Add the new task to the task list
+                taskList.appendChild(newTask);
 
-        // Add the new task to the task list on the right side
-        listaTarefas.appendChild(novaTarefa);
-
-        // Clear form fields
-        form.reset();
+                // Clear the form fields
+                form.reset();
+            })
+            .catch(error => {
+                console.error('Error getting temperature:', error);
+                // If there's an error getting the temperature, create the task without the temperature
+                const newTask = document.createElement('li');
+                newTask.innerHTML = `
+                    <strong>${title}</strong>
+                    <p>${description}</p>
+                    <p>Date: ${date}</p>
+                    <p>Current Temperature: Not available</p>
+                `;
+                taskList.appendChild(newTask);
+                form.reset();
+            });
     });
 });

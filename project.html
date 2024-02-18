@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task Management</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+  <title>Task Manager</title>
   <link rel="stylesheet" href="styles/main.css">
 </head>
-
 <body>
   <nav>
     <ul id="menu">
@@ -25,46 +20,41 @@
   </nav>
 
   <header>
-    <h1>Tasks Management</h1>
+    <h1>Task Manager</h1>
   </header>
 
   <main>
-    <div id="novaTarefaModal" class="modal">
-        <!-- Your new task form -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>New task</h2>
-            <form id="novaTarefaForm">
-                <label for="titulo">Title:</label>
-                <input type="text" id="titulo" name="titulo" required>
+    <div id="createTaskBtn" class="create-task-btn">+</div>
 
-                <label for="descricao">Description:</label>
-                <textarea id="descricao" name="descricao" required></textarea>
+    <div id="newTaskModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>New Task</h2>
+        <form id="newTaskForm">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required>
 
-                <label for="data">Date:</label>
-                <input type="date" id="data" name="data" required>
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" required></textarea>
 
-                <label for="localizacao">Location:</label>
-                <input type="text" id="localizacao" name="localizacao" required>
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date" required>
 
-                <button type="submit">submit</button>
-            </form>
-        </div>
+          <button type="submit">Save</button>
+        </form>
+      </div>
     </div>
 
-    <div id="tarefas">
-        <!-- Your task list -->
-        <h2>Tasks</h2>
-        <ul id="listaTarefas">
-            <!-- Tasks will be listed here -->
-        </ul>
+    <div id="tasks">
+      <h2>Tasks</h2>
+      <ul id="taskList"></ul>
     </div>
   </main>
 
   <footer>
-    &copy;<span id="year"></span> | Tasks Management
+    &copy;<span id="year"></span> | Task Manager
   </footer>
-  <script src="w06-task.js"></script>
-</body>
 
+  <script src="script.js"></script>
+</body>
 </html>

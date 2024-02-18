@@ -1,3 +1,5 @@
+/* CSS Styles */
+
 /* Universal Selector */
 * {
     margin: 0;
@@ -314,9 +316,91 @@ footer {
 
 }
 
-/* Style for title and description boxes */
+/* Style of title and description boxes */
 .modal-content {
     background-color: #f9f9f9; /* Background color */
     padding: 20px;
-    border-radius: 5
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow */
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333; /* Text color */
+}
+
+.modal-content input[type="text"],
+.modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal-content input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal-content button {
+    background-color: #4CAF50; /* Button background color */
+    color: white; /* Button text color */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #45a049; /* Button background color on hover */
+}
+/* Positioning of elements */
+main {
+    display: flex;
+    justify-content: space-between; /* Space between elements */
+    padding: 20px; /* Adds internal space */
+}
+
+#newTaskModal {
+    width: 45%; /* Width of the new task modal */
+}
+
+#tasks {
+    width: 45%; /* Width of the task list */
+}
+
+#taskList {
+    padding: 0; /* Removes default padding from the list */
+    list-style: none; /* Removes bullets from the list */
+    border: 1px solid #ccc; /* Adds a border to the list */
+    border-radius: 5px; /* Adds rounded border to the list */
+    overflow-y: auto; /* Adds vertical scrollbar when needed */
+    max-height: 400px; /* Maximum height of the list with scrollbar */
+}
+
+#taskList li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Adds a line between tasks */
+}
+
+#taskList li:last-child {
+    border-bottom: none; /* Removes line from the last task */
+}
+
+/* Hides the close button and addition icon */
+#newTaskBtn {
+    display: none;
+}
+
+.close {
+    display: none;
 }
