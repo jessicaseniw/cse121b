@@ -4,17 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
-        console.log('Formulário enviado!');
 
         const titulo = document.getElementById('titulo').value;
         const descricao = document.getElementById('descricao').value;
         const data = document.getElementById('data').value;
         const localizacao = document.getElementById('localizacao').value;
-
-        console.log('Título:', titulo);
-        console.log('Descrição:', descricao);
-        console.log('Data:', data);
-        console.log('Localização:', localizacao);
 
         // Função para buscar a previsão do tempo
         async function fetchWeather(location) {
@@ -25,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const response = await fetch(apiUrl);
                 const data = await response.json();
                 const temperature = data.main.temp;
-                console.log('Temperatura:', temperature);
                 return temperature; // Retorna a temperatura em Celsius
             } catch (error) {
                 console.error('Erro ao buscar a previsão do tempo:', error);
@@ -35,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Obter a temperatura para a localização da tarefa
         const temperature = await fetchWeather(localizacao);
-        console.log('Temperatura obtida:', temperature);
 
         // Criar um novo elemento li para a tarefa
         const novaTarefa = document.createElement('li');

@@ -394,3 +394,18 @@ main {
 #listaTarefas li:last-child {
     border-bottom: none; /* Remove a linha da última tarefa */
 }
+
+main {
+    display: flex;
+    justify-content: space-between; /* Espaço entre os elementos */
+    padding: 20px; /* Adiciona um espaço interno */
+}
+
+#novaTarefaModal {
+    width: 45%; /* Largura do modal de nova tarefa */
+}
+
+#tarefas {
+    width: 45%; /* Largura da lista de tarefas */
+}
+
